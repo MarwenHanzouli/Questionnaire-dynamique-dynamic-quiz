@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' }
+  
 ];
 
 @NgModule({

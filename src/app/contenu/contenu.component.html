@@ -1,1 +1,30 @@
-<p>menu works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Choisir le type de question</div>
+                <div class="panel-body">
+                    <div class="btn-group-vertical types">
+                        <button type="button" class="btn btn-default">Question simple</button>
+                        <button type="button" class="btn btn-default">Bouton radio</button>
+                        <button type="button" class="btn btn-default">Case à cocher</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Créer votre questionnaire</div>
+                <div class="panel-body">
+                    <form [formGroup]="questForm" class="form">
+                            <div class="form-group">
+                                    <label for="titre">Titre : </label>
+                                    <input type="text" id="titre" class="form-control" formControlName="titre" placeholder="Entrer le titre de questionnaire">
+                            </div>
+                            <button type="submit" class="btn btn-primary" [disabled]="questForm.invalid">Valider</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,3 +3,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+.simples{
+    overflow: auto;
+    max-height: 200px;
+}

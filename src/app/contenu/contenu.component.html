@@ -5,9 +5,9 @@
                 <div class="panel-heading">Choisir le type de question</div>
                 <div class="panel-body">
                     <div class="btn-group-vertical types">
-                        <button type="button" class="btn btn-default">Question simple</button>
+                        <button type="button" class="btn btn-default" (click)="onAjouterQuestionSimple()">Question simple</button>
                         <button type="button" class="btn btn-default">Bouton radio</button>
-                        <button type="button" class="btn btn-default">Case à cocher</button>
+                        <button type="button" class="btn btn-default" (click)="onAjouterQCM()">Case à cocher</button>
                     </div>
                 </div>
             </div>
@@ -16,11 +16,42 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Créer votre questionnaire</div>
                 <div class="panel-body">
-                    <form [formGroup]="questForm" class="form">
+                    <form [formGroup]="questForm" class="form" (ngSubmit)="onSubmitForm()">
                             <div class="form-group">
                                     <label for="titre">Titre : </label>
                                     <input type="text" id="titre" class="form-control" formControlName="titre" placeholder="Entrer le titre de questionnaire">
                             </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Vos questions simples</div>
+                                <div class="panel-body simples">
+                                    <div formArrayName="simples">
+                                        <div class="form-group" *ngFor="let questionContorl of getQuestionsSimples().controls; let i=index">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Entrez votre nouveau question" [formControlName]="i">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-default" type="button" data-toggle="tooltip" title="Supprimer" (click)="onSupprimerQuestionSimple(i)">
+                                                      <i class="glyphicon glyphicon-remove"></i>
+                                                    </button>
+                                                  </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="panel panel-default">
+                                <div class="panel-heading">Vos boutons radio</div>
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="question">Question : </label>
+                                        <input type="text" id="question" class="form-control" placeholder="Entrer le question">
+                                    </div>
+                                    <div formArrayName="QCM">
+                                        <div class="form-group" *ngFor="let qcm of getQCM().controls; let i=index">
+                                            <input type="checkbox" class="form-control" [formControlName]="i" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
                             <button type="submit" class="btn btn-primary" [disabled]="questForm.invalid">Valider</button>
                     </form>
                 </div>

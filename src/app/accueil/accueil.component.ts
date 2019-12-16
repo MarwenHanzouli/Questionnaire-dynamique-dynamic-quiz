@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-menu',
-  templateUrl: './contenu.component.html',
-  styleUrls: ['./contenu.component.css']
+  templateUrl: './accueil.component.html',
+  styleUrls: ['./accueil.component.css']
 })
-export class ContenuComponent implements OnInit {
+export class AccueilComponent implements OnInit {
 
   questForm: FormGroup;
   constructor(private formBuilder: FormBuilder) { }

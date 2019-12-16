@@ -9,7 +9,9 @@ import { ContenuComponent } from './contenu/contenu.component';
 import { HeaderComponent } from './header/header.component';
 import { QuestionComponent } from './question/question.component';
 import { ListQuestionsComponent } from './list-questions/list-questions.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { StatistiquesComponent } from './statistiques/statistiques.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContenuComponent,
     HeaderComponent,
     QuestionComponent,
-    ListQuestionsComponent
+    ListQuestionsComponent,
+    StatistiquesComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

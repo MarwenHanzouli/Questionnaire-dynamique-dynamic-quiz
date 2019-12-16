@@ -1,1 +1,110 @@
-<p>list-questions works!</p>
+<div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Choisir le type de question</div>
+                    <div class="panel-body">
+                        <div class="btn-group-vertical types">
+                            <button type="button" class="btn btn-default" (click)="onAjouterQuestionSimple()">Question simple <i class="glyphicon glyphicon-plus-sign"></i></button>
+                            <button type="button" class="btn btn-default">Bouton radio <i class="glyphicon glyphicon-plus-sign"></i></button>
+                            <button type="button" class="btn btn-default" (click)="ajouterQcm()">Questions à choix multiples <i class="glyphicon glyphicon-plus-sign"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Créer votre questionnaire</div>
+                    <div class="panel-body">
+                        <form [formGroup]="questForm" class="form" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                    <label for="titre">Titre : </label>
+                                    <input type="text" id="titre" class="form-control" formControlName="titre" placeholder="Entrer le titre de questionnaire">
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Vos questions simples 
+                                        <span class="badge" style="position: absolute; right: 10%;">12</span>
+                                    </div>
+                                    <div class="panel-body simples">
+                                        <div formArrayName="questionsSimples">
+                                            <div class="form-group" *ngFor="let questionContorl of getQuestionsSimples().controls; let i=index">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" placeholder="Entrez votre nouvelle question" formControlName="titreQuestionSimple">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-default" type="button" data-toggle="tooltip" title="Supprimer" (click)="onSupprimerQuestionSimple(i)">
+                                                          <i class="glyphicon glyphicon-remove"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                  <div class="panel panel-default">
+                                    <div class="panel-heading">Vos questions à choix unique</div>
+                                    <div class="panel-body">
+                                        <div formArrayName="qcm">
+                                            <div [formGroupName]="j" *ngFor="let question of getQcm().controls; let j = index">
+                                                <label for="question">Question : </label>
+                                                <div class="input-group">
+                                                        <input type="text" id="question" class="form-control" formControlName="titreQuestion" placeholder="Entrer la question">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-default" type="button" data-toggle="tooltip" title="Supprimer" (click)="supprimerQuestion(i)">
+                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>                                               
+                                                <br>
+                                                <div *ngIf="questForm.errors" class="alert alert-danger">
+                                                {{ questForm.errors }}
+                                                </div>
+                                                <div formArrayName="options">
+                                                    <div [formGroupName]="k" *ngFor="let option of getOptions(question); let k=index">
+                                                        <table>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="radio" disabled="disabled">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" class="form-control" placeholder="Option {{k+1}}" formControlName="titreOption">
+                                                                </td>
+                                                                <td>
+                                                                    <button class="btn btn-default" type="button" data-toggle="tooltip" title="Supprimer" (click)="supprimerOption(j,k)">
+                                                                        <i class="glyphicon glyphicon-remove"></i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        </table>                                                       
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="btn-group-horizontal">
+                                                    <button class="btn btn-success" type="button" (click)="ajouterOption(j)">
+                                                        Ajouter une autre option
+                                                        <i class="glyphicon glyphicon-plus-sign"></i>
+                                                    </button>
+                                                    <button class="btn btn-warning" *ngIf="getOptions(question).length>0" type="button" (click)="supprimerToutesOptions(j)">
+                                                        Supprimer toutes les options
+                                                        <i class="glyphicon glyphicon-remove-sign"></i>
+                                                    </button>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                            </div>
+                                            
+                                        </div>
+                                  </div>
+                                <button type="submit" class="btn btn-primary" [disabled]="questForm.invalid">
+                                    Valider le questionnaire
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                </button>
+                                <button type="reset" class="btn btn-danger" (click)="onRefresh()">
+                                    Réinitialiser le questionnaire
+                                    <i class="glyphicon glyphicon-refresh"></i>
+                                </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -92,6 +92,6 @@ export class ListQuestionsComponent implements OnInit {
   }
   onSubmit(){
     const formValue=this.questForm.value;
-    console.log(formValue);
+    console.log(JSON.stringify(formValue));
   }
 }

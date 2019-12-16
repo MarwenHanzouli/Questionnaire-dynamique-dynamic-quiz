@@ -17,3 +17,7 @@
     display: flex;
     justify-content: space-around;
 }
+.bad{
+    position: absolute; 
+    right: 10%;
+}

@@ -1,0 +1,35 @@
+{
+    "titre": "Questionnaire 1",
+    "questionsSimples": [
+        {
+            "titreQuestionSimple": "Votre nom?"
+        },
+        {
+            "titreQuestionSimple": "Votre prénom?"
+        }
+    ],
+    "qcm": [
+        {
+            "titreQuestion": "Niveau?",
+            "options": [
+                {
+                    "titreOption": "Ing"
+                },
+                {
+                    "titreOption": "Licence"
+                }
+            ]
+        },
+        {
+            "titreQuestion": "Genre?",
+            "options": [
+                {
+                    "titreOption": "Homme"
+                },
+                {
+                    "titreOption": "Femme"
+                }
+            ]
+        }
+    ]
+}

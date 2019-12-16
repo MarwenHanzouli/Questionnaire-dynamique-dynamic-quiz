@@ -23,11 +23,11 @@
                                 </div>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">Vos questions simples 
-                                        <span class="badge" style="position: absolute; right: 10%;">12</span>
+                                        <span class="badge bad" *ngIf="getQuestionsSimples.length>=0">{{getQuestionsSimples().length}}</span>
                                     </div>
                                     <div class="panel-body simples">
                                         <div formArrayName="questionsSimples">
-                                            <div class="form-group" *ngFor="let questionContorl of getQuestionsSimples().controls; let i=index">
+                                            <div class="form-group" [formGroupName]="i" *ngFor="let questionContorl of getQuestionsSimples().controls; let i=index">
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" placeholder="Entrez votre nouvelle question" formControlName="titreQuestionSimple">
                                                     <div class="input-group-btn">
@@ -41,13 +41,15 @@
                                     </div>
                                   </div>
                                   <div class="panel panel-default">
-                                    <div class="panel-heading">Vos questions à choix unique</div>
+                                    <div class="panel-heading">Vos questions à choix unique
+                                        <span class="badge bad" *ngIf="getQcm().length>=0">{{getQcm().length}}</span>
+                                    </div>
                                     <div class="panel-body">
                                         <div formArrayName="qcm">
-                                            <div [formGroupName]="j" *ngFor="let question of getQcm().controls; let j = index">
+                                            <div [formGroupName]="j" *ngFor="let question of getQcm().controls; let j = index" class="form-group">
                                                 <label for="question">Question : </label>
                                                 <div class="input-group">
-                                                        <input type="text" id="question" class="form-control" formControlName="titreQuestion" placeholder="Entrer la question">
+                                                    <input type="text" id="question" class="form-control" formControlName="titreQuestion" placeholder="Entrer la question">
                                                     <div class="input-group-btn">
                                                         <button class="btn btn-default" type="button" data-toggle="tooltip" title="Supprimer" (click)="supprimerQuestion(i)">
                                                             <i class="glyphicon glyphicon-remove"></i>
@@ -94,7 +96,7 @@
                                             
                                         </div>
                                   </div>
-                                <button type="submit" class="btn btn-primary" [disabled]="questForm.invalid">
+                                <button type="submit" class="btn btn-primary" [disabled]=questForm.invalid>
                                     Valider le questionnaire
                                     <i class="glyphicon glyphicon-ok"></i>
                                 </button>

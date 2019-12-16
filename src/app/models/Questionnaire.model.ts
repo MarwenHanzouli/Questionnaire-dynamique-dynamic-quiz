@@ -1,6 +1,7 @@
 export class Questionnaire {
     constructor(
         public titre : string,
-        public questionsSimple?: string[]
+        public questionsSimples?: string[],
+        public qcm?: string[]
     ){}
 }

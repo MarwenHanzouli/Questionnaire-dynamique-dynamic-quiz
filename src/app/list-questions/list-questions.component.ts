@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { GestionQuestionnaireService } from '../services/gestion-questionnaire.service';
+import { Questionnaire } from '../models/Questionnaire.model';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-list-questions',
   templateUrl: './list-questions.component.html',
@@ -8,7 +12,9 @@ import { FormArray, FormGroup, FormControl, Validators, FormBuilder } from '@ang
 export class ListQuestionsComponent implements OnInit {
 
   questForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private gestionService: GestionQuestionnaireService,
+              private router: Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -92,6 +98,9 @@ export class ListQuestionsComponent implements OnInit {
   }
   onSubmit(){
     const formValue=this.questForm.value;
-    console.log(JSON.stringify(formValue));
+    const quest=new Questionnaire(formValue['titre'],formValue['questionsSimples'],formValue['qcm']);
+    console.log(quest);
+    this.gestionService.ajouterQuestionnaire(quest);
+    this.router.navigate(['/questionnaire']);
   }
 }

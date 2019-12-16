@@ -7,7 +7,7 @@
                         <div class="btn-group-vertical types">
                             <button type="button" class="btn btn-default" (click)="onAjouterQuestionSimple()">Question simple <i class="glyphicon glyphicon-plus-sign"></i></button>
                             <button type="button" class="btn btn-default">Bouton radio <i class="glyphicon glyphicon-plus-sign"></i></button>
-                            <button type="button" class="btn btn-default" (click)="ajouterQcm()">Questions à choix multiples <i class="glyphicon glyphicon-plus-sign"></i></button>
+                            <button type="button" class="btn btn-default" (click)="ajouterQcm()">Questions à choix unique <i class="glyphicon glyphicon-plus-sign"></i></button>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                                                 <div class="input-group">
                                                     <input type="text" id="question" class="form-control" formControlName="titreQuestion" placeholder="Entrer la question">
                                                     <div class="input-group-btn">
-                                                        <button class="btn btn-default" type="button" data-toggle="tooltip" title="Supprimer" (click)="supprimerQuestion(i)">
+                                                        <button class="btn btn-default" type="button" data-toggle="tooltip" title="Supprimer" (click)="supprimerQuestion(j)">
                                                             <i class="glyphicon glyphicon-remove"></i>
                                                         </button>
                                                     </div>

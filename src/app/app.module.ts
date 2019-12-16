@@ -7,11 +7,13 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthComponent } from './auth/auth.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { HeaderComponent } from './header/header.component';
-import { QuestionComponent } from './question/question.component';
 import { ListQuestionsComponent } from './list-questions/list-questions.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StatistiquesComponent } from './statistiques/statistiques.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { GestionQuestionnaireService } from './services/gestion-questionnaire.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ReponseQuestionnaireComponent } from './reponse-questionnaire/reponse-questionnaire.component';
 
 @NgModule({
   declarations: [
@@ -20,18 +22,21 @@ import { InscriptionComponent } from './inscription/inscription.component';
     AuthComponent,
     AccueilComponent,
     HeaderComponent,
-    QuestionComponent,
     ListQuestionsComponent,
     StatistiquesComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    ReponseQuestionnaireComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    GestionQuestionnaireService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,6 +13,7 @@ export class ListQuestionsComponent implements OnInit {
   questForm: FormGroup;
   succes: boolean;
   error:boolean;
+  id: number;
   constructor(private formBuilder: FormBuilder,
               private gestionService: GestionQuestionnaireService,
               private router: Router) { }
@@ -21,6 +22,7 @@ export class ListQuestionsComponent implements OnInit {
     this.initForm();
     this.succes=false;
     this.error=false;
+    this.id=0;
   }
   //Initialisation des formulaires
   initForm()
@@ -102,7 +104,8 @@ export class ListQuestionsComponent implements OnInit {
   }
   onSubmit(){
     const formValue=this.questForm.value;
-    const quest=new Questionnaire(formValue['titre'],formValue['questionsSimples'],formValue['qcm']);
+    this.id++;
+    const quest=new Questionnaire(this.id,formValue['titre'],formValue['questionsSimples'],formValue['qcm']);
     console.log(quest);
     this.gestionService.ajouterQuestionnaire(quest);
     this.succes=true;

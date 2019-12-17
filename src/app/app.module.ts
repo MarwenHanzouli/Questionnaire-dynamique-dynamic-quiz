@@ -14,6 +14,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { GestionQuestionnaireService } from './services/gestion-questionnaire.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReponseQuestionnaireComponent } from './reponse-questionnaire/reponse-questionnaire.component';
+import { EmojiDirective } from './emoji.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ReponseQuestionnaireComponent } from './reponse-questionnaire/reponse-q
     ListQuestionsComponent,
     StatistiquesComponent,
     InscriptionComponent,
-    ReponseQuestionnaireComponent
+    ReponseQuestionnaireComponent,
+    EmojiDirective
   ],
   imports: [
     BrowserModule,

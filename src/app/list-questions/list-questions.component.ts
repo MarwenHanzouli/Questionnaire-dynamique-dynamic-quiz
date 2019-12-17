@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormArray, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { GestionQuestionnaireService } from '../services/gestion-questionnaire.service';
 import { Questionnaire } from '../models/Questionnaire.model';
-import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-list-questions',
@@ -12,12 +11,16 @@ import { Router } from '@angular/router';
 export class ListQuestionsComponent implements OnInit {
 
   questForm: FormGroup;
+  succes: boolean;
+  error:boolean;
   constructor(private formBuilder: FormBuilder,
               private gestionService: GestionQuestionnaireService,
               private router: Router) { }
 
   ngOnInit() {
     this.initForm();
+    this.succes=false;
+    this.error=false;
   }
   //Initialisation des formulaires
   initForm()
@@ -95,12 +98,15 @@ export class ListQuestionsComponent implements OnInit {
     this.questForm.get('titre').setValue('');
     (<FormArray>this.questForm.get(['qcm'])).controls=[];
     (<FormArray>this.questForm.get(['questionsSimples'])).controls=[];
+    this.succes=false;
   }
   onSubmit(){
     const formValue=this.questForm.value;
     const quest=new Questionnaire(formValue['titre'],formValue['questionsSimples'],formValue['qcm']);
     console.log(quest);
     this.gestionService.ajouterQuestionnaire(quest);
+    this.succes=true;
+    //this.onRefresh();
     this.router.navigate(['/questionnaire']);
   }
 }

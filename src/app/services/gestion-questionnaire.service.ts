@@ -16,6 +16,9 @@ export class GestionQuestionnaireService {
   emitQuestSubject(){
     this.questSubject.next(this.questionnaires.slice());
   }
+  getQuestionnaires(){
+    return this.questionnaires;
+  }
   ajouterQuestionnaire(ques: Questionnaire){
     this.questionnaires.push(ques);
     this.emitQuestSubject();
@@ -52,6 +55,8 @@ export class GestionQuestionnaireService {
   }
 
   getQuestionnaireById(id){
-
+    return this.questionnaires.find(
+      quest => quest.id==id
+      );
   }
 }

@@ -7,12 +7,14 @@ import { ListQuestionsComponent } from './list-questions/list-questions.componen
 import { StatistiquesComponent } from './statistiques/statistiques.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AuthComponent } from './auth/auth.component';
+import { ReponseQuestionnaireComponent } from './reponse-questionnaire/reponse-questionnaire.component';
 const routes: Routes = [
   { path: 'accueil', component: AccueilComponent},
   { path: 'questionnaire', component: ListQuestionsComponent },
   { path: 'statistiques', component: StatistiquesComponent },
   { path: 'connexion', component: AuthComponent },
   { path: 'inscription', component: InscriptionComponent },
+  { path: 'questionnaires/repondre/:id', component: ReponseQuestionnaireComponent },
   { path: '', component: AppComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' }

@@ -32,7 +32,7 @@
         <tr *ngFor="let quest of getQuestionnairesAfficher(); let i=index">
             <td>{{quest['titre']}}</td>
             <td>
-                <button class="btn btn-info btn-sm">Répondre 
+                <button class="btn btn-info btn-sm" routerLink="/questionnaires/repondre/{{quest['id']}}">Répondre 
                     <i class="glyphicon glyphicon-send"></i>
                 </button>
             </td>

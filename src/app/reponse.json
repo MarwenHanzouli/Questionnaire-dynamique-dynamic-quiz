@@ -1,0 +1,15 @@
+{
+    "email":"marwenhanzouli@gmail",
+    "id":1,
+    "titreQuestionnaire":"Identification",
+    "reponsesSimples": [
+        {"question":"Quel âge as-tu","reponse":"23"},
+        {"question":"Votre nom","reponse":"Hanzouli"},
+        {"question":"Votre prénom","reponse":"Marwen"},
+        {"question":"Votre adresse","reponse":"Mornag"}
+    ],
+    "qcm":[
+        {"question":"Genre","reponse":"Homme"},
+        {"question":"Niveau","reponse":"Ing"}
+    ]
+}

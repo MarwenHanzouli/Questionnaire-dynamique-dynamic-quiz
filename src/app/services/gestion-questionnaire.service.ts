@@ -53,7 +53,7 @@ export class GestionQuestionnaireService {
       );
     this.emitQuestSubject();
     let params = new HttpParams().set('titre', titre);
-    this.httpClient.get('http://127.0.0.1:3000/Qte/', { params: params })
+    this.httpClient.get('http://127.0.0.1:3000/Qte', { params: params })
     .subscribe(
       (reponse) => {
         console.log(reponse);

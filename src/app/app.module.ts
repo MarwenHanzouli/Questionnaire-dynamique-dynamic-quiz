@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReponseQuestionnaireComponent } from './reponse-questionnaire/reponse-questionnaire.component';
 import { EmojiDirective } from './emoji.directive';
 import { GestionReponseService } from './services/gestion-reponse.service';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { GestionReponseService } from './services/gestion-reponse.service';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [
     GestionQuestionnaireService,

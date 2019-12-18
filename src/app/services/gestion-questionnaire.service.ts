@@ -47,7 +47,7 @@ export class GestionQuestionnaireService {
     );
   }
 
-  getQuestionnairesByTag(titre: string){
+  getQuestionnairesByTitre(titre: string){
     this.questionnaires=this.questionnaires.filter(
       quest => quest.titre.toLowerCase().indexOf(titre.toLowerCase())!=-1
       );

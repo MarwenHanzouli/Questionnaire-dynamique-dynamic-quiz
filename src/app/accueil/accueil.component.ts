@@ -39,14 +39,14 @@ export class AccueilComponent implements OnInit, OnDestroy {
     console.log(event.keyCode);
     if(event.keyCode==8 || event.keyCode==46)
     {
-      this.gestionService.getQuestionnairesByTag(event.target.value.toString());
+      this.gestionService.getQuestionnairesByTitre(event.target.value.toString());
       this.questionnaireSubscription=this.gestionService.questSubject.subscribe(
         (quests: Questionnaire[]) => {
           this.questionnairesAfficher=quests;
         }
       );
     }
-    this.gestionService.getQuestionnairesByTag(event.target.value.toString());
+    this.gestionService.getQuestionnairesByTitre(event.target.value.toString());
     this.questionnaireSubscription=this.gestionService.questSubject.subscribe(
       (quests: Questionnaire[]) => {
         this.questionnairesAfficher=quests;

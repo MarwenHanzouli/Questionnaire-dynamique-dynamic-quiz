@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Reponse } from '../models/Reponse.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GestionQuestionnaireService } from './gestion-questionnaire.service';
 import { Questionnaire } from '../models/Questionnaire.model';
 
@@ -9,6 +9,7 @@ import { Questionnaire } from '../models/Questionnaire.model';
 })
 export class GestionReponseService {
 
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private httpClient: HttpClient,
               private gestionQuest: GestionQuestionnaireService) { }
 
@@ -33,5 +34,15 @@ export class GestionReponseService {
     }
     const reponse=new Reponse(rep['email'],1,questionnaire.titre,reponsesSimples,qcm);
     console.log(JSON.stringify(reponse));
+    this.httpClient.post('http://127.0.0.1:3000/rp', reponse, {headers: this.headers})
+    .subscribe(
+     (data) => {
+      console.log(data);
+      
+     },
+     (error) => {
+       console.log('Erreur : '+ error);
+     }
+    );
   }
 }

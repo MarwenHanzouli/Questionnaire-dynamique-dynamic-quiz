@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Reponse } from '../models/Reponse.model';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClient } from '@angular/common/http';
 import { GestionQuestionnaireService } from './gestion-questionnaire.service';
 import { Questionnaire } from '../models/Questionnaire.model';
 
@@ -32,6 +32,6 @@ export class GestionReponseService {
       qcm.push(reponseSimple);
     }
     const reponse=new Reponse(rep['email'],1,questionnaire.titre,reponsesSimples,qcm);
-    console.log(reponse);
+    console.log(JSON.stringify(reponse));
   }
 }

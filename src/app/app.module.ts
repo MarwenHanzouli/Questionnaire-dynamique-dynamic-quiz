@@ -15,6 +15,7 @@ import { GestionQuestionnaireService } from './services/gestion-questionnaire.se
 import { HttpClientModule } from '@angular/common/http';
 import { ReponseQuestionnaireComponent } from './reponse-questionnaire/reponse-questionnaire.component';
 import { EmojiDirective } from './emoji.directive';
+import { GestionReponseService } from './services/gestion-reponse.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { EmojiDirective } from './emoji.directive';
     HttpClientModule
   ],
   providers: [
-    GestionQuestionnaireService
+    GestionQuestionnaireService,
+    GestionReponseService
   ],
   bootstrap: [AppComponent]
 })

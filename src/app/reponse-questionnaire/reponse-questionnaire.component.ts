@@ -31,7 +31,7 @@ export class ReponseQuestionnaireComponent implements OnInit {
   }
   initForm(){
     this.repForm= this.formBuilder.group({
-      email: ['',Validators.email],
+      email: ['',[Validators.required, Validators.email]],
       reponsesSimples: this.formBuilder.array([]),
       qcm: this.formBuilder.array([])
     });

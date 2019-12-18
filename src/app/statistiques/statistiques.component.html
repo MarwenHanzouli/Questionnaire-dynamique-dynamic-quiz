@@ -1,1 +1,38 @@
-<p>statistiques works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <h2>Voir les statistiques</h2>
+            <div class="well well-sm">
+                <div style="display: block; width: auto; height: auto;">
+                    <canvas baseChart
+                            [datasets]="barChartData"
+                            [labels]="barChartLabels"
+                            [options]="barChartOptions"
+                            [legend]="barChartLegend"
+                            [chartType]="barChartType">
+                    </canvas>
+                </div>
+            </div>
+            <div class="well well-sm">
+                <div style="display: block; width: auto; height: auto;">
+                    <canvas baseChart
+                            [data]="pieChartData"
+                            [labels]="pieChartLabels"
+                            [chartType]="pieChartType">
+                    </canvas>
+                </div>
+            </div>
+            <div class="well well-sm">
+                <div style="display: block; width: auto ; height:auto;">
+                    <canvas baseChart
+                            [data]="doughnutChartData"
+                            [labels]="doughnutChartLabels"
+                            [chartType]="doughnutChartType">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>

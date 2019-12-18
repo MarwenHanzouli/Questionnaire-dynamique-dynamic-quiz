@@ -17,6 +17,7 @@ import { ReponseQuestionnaireComponent } from './reponse-questionnaire/reponse-q
 import { EmojiDirective } from './emoji.directive';
 import { GestionReponseService } from './services/gestion-reponse.service';
 import { ChartsModule } from 'ng2-charts';
+import { StatistiquesService } from './services/statistiques.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ChartsModule } from 'ng2-charts';
   ],
   providers: [
     GestionQuestionnaireService,
-    GestionReponseService
+    GestionReponseService,
+    StatistiquesService
   ],
   bootstrap: [AppComponent]
 })

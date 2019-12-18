@@ -3,6 +3,8 @@ import { GestionQuestionnaireService } from '../services/gestion-questionnaire.s
 import { ActivatedRoute, Router } from '@angular/router';
 import { Questionnaire } from '../models/Questionnaire.model';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { Reponse } from '../models/Reponse.model';
+import { GestionReponseService } from '../services/gestion-reponse.service';
 
 @Component({
   selector: 'app-reponse-questionnaire',
@@ -17,7 +19,8 @@ export class ReponseQuestionnaireComponent implements OnInit {
   constructor(private gestionService: GestionQuestionnaireService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private router:Router) { }
+    private router:Router,
+    private gestionReponse: GestionReponseService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];  
@@ -28,6 +31,7 @@ export class ReponseQuestionnaireComponent implements OnInit {
   }
   initForm(){
     this.repForm= this.formBuilder.group({
+      email: ['',Validators.email],
       reponsesSimples: this.formBuilder.array([]),
       qcm: this.formBuilder.array([])
     });
@@ -102,9 +106,10 @@ export class ReponseQuestionnaireComponent implements OnInit {
     const formValue=this.repForm.value;
     //const id=this.gestionService.getQuestionnaires().length+1;
     //const quest=new Questionnaire(id,formValue['titre'],formValue['questionsSimples'],formValue['qcm']);
+    //const reponse=new Reponse(formValue['email'],1,formValue['titre'],formValue['reponsesSimples'],formValue['qcm'])
     console.log(JSON.stringify(formValue));
-    console.log(form.controls);
-    //this.gestionService.ajouterQuestionnaire(quest);
+    //console.log(form.controls);
+    this.gestionReponse.ajouterReponse(formValue,this.questionnaire);
     //this.onRefresh();
     //this.router.navigate(['/questionnaire']);
   }

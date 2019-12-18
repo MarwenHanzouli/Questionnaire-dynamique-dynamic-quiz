@@ -1,1 +1,56 @@
-<p>{{getQuestionnaireById() | json}}</p>
+<p>{{questionnaireJson}}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Titre:</strong> {{questionnaire['titre']}}</div>
+                <div class="panel-body">
+                    <form [formGroup]="repForm" (ngSubmit)="onSubmit(repForm)">
+                        <div formArrayName="reponsesSimples">
+                            <div class="form-group" [formGroupName]="i" *ngFor="let reponseContorl of getReponsesSimples().controls; let i=index">
+                                <div class="input-group">
+                                    <label for="rep">{{questionnaire.questionsSimples[i]['titreQuestionSimple']}} ?</label>
+                                    <input type="text" class="form-control" id="rep" placeholder="Entrez votre réponse" formControlName="reponseSimple">
+                                </div>
+                            </div>
+                        </div>
+                        <div formArrayName="qcm">
+                            <div class="form-group" [formGroupName]="j" *ngFor="let reponseContorl of getReponsesQcm().controls; let j=index">
+                                <label for="repQcm">{{questionnaire.qcm[j]['titreQuestion']}} ?</label>
+                                <div formArrayName="options">
+                                    <div [formGroupName]="k" *ngFor="let option of getOptions(reponseContorl) ;let k=index">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" id="repQcm" name="{{questionnaire.qcm[j]['titreQuestion']}}" value="{{questionnaire.qcm[j]['options'][k]['titreOption']}}" >{{questionnaire.qcm[j]['options'][k]['titreOption']}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-success alert-dismissible fade in" *ngIf="succes">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong appEmoji="✌️ 😀 😉 👍 👍">Votre réponse a été envoyée avec succès </strong>
+                        </div>
+                        <div class="alert alert-danger alert-dismissible fade in" *ngIf="error">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong appEmoji="😓😓😓👎👎👎">Oups! Répondez à toutes les questions! </strong>
+                        </div>
+                        <button type="submit" class="btn btn-success" [disabled]="repForm.invalid || myOptions().invalid">
+                            Envoyer la réponse
+                            <i class="glyphicon glyphicon-ok"></i>
+                        </button>
+                        
+                        <button type="reset" class="btn btn-danger" (click)="onRefresh()">
+                            Annuler
+                            <i class="glyphicon glyphicon-refresh"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+

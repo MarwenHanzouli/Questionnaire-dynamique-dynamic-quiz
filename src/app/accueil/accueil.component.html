@@ -2,14 +2,14 @@
     <h2>Consulter les questionnaires</h2>
     <form class="navbar-form navbar-left" (ngSubmit)="onChercher(f)" #f="ngForm">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Chercher une questionnaire" name="chercher" ngModel required (keyup)="onKeyUp($event)">
+          <input type="text" class="form-control" placeholder="Chercher une questionnaire" name="chercher" [(ngModel)]="valeurDeRecherche" required (keyup)="onKeyUp($event)">
           <div class="input-group-btn">
             <button class="btn btn-default" type="submit" [disabled]="f.invalid">
               <i class="glyphicon glyphicon-search"></i>
             </button>
           </div>
         </div>
-        <button *ngIf="questionnairesAfficher.length>0" class="btn btn-success btn-sm" routerLink="/questionnaire">Ajouter un questionnaire
+        <button *ngIf="getQuestionnaires().length>0" class="btn btn-success btn-sm" routerLink="/questionnaire">Ajouter un questionnaire
             <i class="glyphicon glyphicon-plus"></i>
         </button>
     </form>
@@ -17,11 +17,11 @@
       <thead>
         <tr>
           <th>Questionnaires</th>
-          <th *ngIf="questionnairesAfficher.length>0">Action</th>
+          <th *ngIf="getQuestionnaires().length>0">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngIf="questionnairesAfficher.length===0">
+        <tr *ngIf="getQuestionnaires().length===0">
           <td>Aucun questionnaire...</td>
           <td>
               <button class="btn btn-success btn-sm" routerLink="/questionnaire">Ajouter un questionnaire
@@ -29,7 +29,7 @@
               </button>
             </td>
         </tr>
-        <tr *ngFor="let quest of getQuestionnairesAfficher(); let i=index">
+        <tr *ngFor="let quest of getQuestionnaires(); let i=index">
             <td>{{quest['titre']}}</td>
             <td>
                 <button class="btn btn-info btn-sm" routerLink="/questionnaires/repondre/{{quest['id']}}">Répondre 

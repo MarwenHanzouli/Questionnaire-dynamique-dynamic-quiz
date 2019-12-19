@@ -20,7 +20,7 @@ export class GestionReponseService {
     {
       const reponseSimple={ 
                             "question": questionnaire.questionsSimples[i]['titreQuestionSimple'],
-                            "reponse": rep['reponsesSimples'][i]['reponseSimple']
+                            "reponse": rep['reponsesSimples'][i]['reponseSimple'].trim()
                           }
       reponsesSimples.push(reponseSimple);
     }
@@ -28,7 +28,7 @@ export class GestionReponseService {
     {
       const reponseSimple={ 
                             "question": questionnaire.qcm[j]['titreQuestion'],
-                            "reponse": reponsesQcm[j]
+                            "reponse": reponsesQcm[j].trim()
                           }
       qcm.push(reponseSimple);
     }

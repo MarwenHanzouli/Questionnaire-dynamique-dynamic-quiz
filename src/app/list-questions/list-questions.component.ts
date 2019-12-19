@@ -113,7 +113,7 @@ export class ListQuestionsComponent implements OnInit {
   onSubmit(){
     const formValue=this.questForm.value;
     const id=this.gestionService.getQuestionnaires().length+1;
-    const quest=new Questionnaire(id,formValue['titre'],formValue['questionsSimples'],formValue['qcm']);
+    const quest=new Questionnaire(id,formValue['titre'].trim(),formValue['questionsSimples'],formValue['qcm']);
     console.log(quest);
     this.gestionService.ajouterQuestionnaire(quest);
     this.succes=true;

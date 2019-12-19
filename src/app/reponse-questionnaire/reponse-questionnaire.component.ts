@@ -118,14 +118,14 @@ export class ReponseQuestionnaireComponent implements OnInit {
   }
   onSubmit(form){
     const formValue=this.repForm.value;
-    console.log(this.reponsesQcm);
+    ///console.log(this.reponsesQcm);
     //const id=this.gestionService.getQuestionnaires().length+1;
     //const quest=new Questionnaire(id,formValue['titre'],formValue['questionsSimples'],formValue['qcm']);
     //const reponse=new Reponse(formValue['email'],1,formValue['titre'],formValue['reponsesSimples'],formValue['qcm'])
-    console.log('form:'+JSON.stringify(formValue));
+    //console.log('form:'+JSON.stringify(formValue));
     //console.log(form.controls);
     this.gestionReponse.ajouterReponse(formValue,this.questionnaire,this.reponsesQcm);
     //this.onRefresh();
-    //this.router.navigate(['/questionnaire']);
+    this.router.navigate(['/alert','reponse']);
   }
 }

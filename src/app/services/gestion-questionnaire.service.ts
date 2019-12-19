@@ -21,6 +21,7 @@ export class GestionQuestionnaireService {
   }
   ajouterQuestionnaire(ques: Questionnaire){
     this.questionnaires.push(ques);
+    console.log(ques);
     this.emitQuestSubject();
     this.httpClient.post('http://127.0.0.1:3000/qte', ques, {headers: this.headers})
     .subscribe(
@@ -47,23 +48,28 @@ export class GestionQuestionnaireService {
     );
   }
 
-  getQuestionnairesByTitre(titre: string){
-    this.questionnaires=this.questionnaires.filter(
-      quest => quest.titre.toLowerCase().indexOf(titre.toLowerCase())!=-1
+  getQuestionnairesByTitre(titre: string): Questionnaire[]{
+    let resultat: any[];
+    resultat=this.questionnaires.filter(
+      quest => quest.titre.toLowerCase().indexOf(titre.toLowerCase().trim())!=-1
       );
-    this.emitQuestSubject();
+      return resultat;
+  }
+  getQuestionnaireByTitre(titre: string): Questionnaire{
+    let resultat;
     let params = new HttpParams().set('titre', titre);
     this.httpClient.get('http://127.0.0.1:3000/Qte', { params: params })
     .subscribe(
       (reponse) => {
         console.log(reponse);
+        resultat=reponse;
       },
       (error) => {
         console.log(error);
       }
     );
+    return resultat;
   }
-
   getQuestionnaireById(id){
     return this.questionnaires.find(
       quest => quest.id==id

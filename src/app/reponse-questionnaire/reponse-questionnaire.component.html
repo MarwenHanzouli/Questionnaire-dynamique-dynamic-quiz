@@ -30,6 +30,11 @@
                                 <hr>
                             </div>
                         </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="email" type="text" formControlName="email" class="form-control" placeholder="Entrer votre e-mail">
+                        </div>
+                        <br>
                         <div class="alert alert-success alert-dismissible fade in" *ngIf="succes">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                             <strong appEmoji="✌️ 😀 😉 👍 👍">Votre réponse a été envoyée avec succès </strong>
@@ -38,11 +43,6 @@
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                             <strong appEmoji="😓😓😓👎👎👎">Oups! Répondez à toutes les questions! </strong>
                         </div>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="email" type="text" formControlName="email" class="form-control" placeholder="Entrer votre e-mail">
-                        </div>
-                        <br>
                         <button type="submit" class="btn btn-success" [disabled]="repForm.invalid || !testOptionsSelected()">
                             Envoyer la réponse
                             <i class="glyphicon glyphicon-ok"></i>

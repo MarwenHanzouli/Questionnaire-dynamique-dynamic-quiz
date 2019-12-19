@@ -10,11 +10,15 @@ import { Subscription } from 'rxjs';
 })
 export class AccueilComponent implements OnInit, OnDestroy {
   private questionnaires: Questionnaire[]=[];
-  private questionnairesAfficher: Questionnaire[]=[];
   private questionnaireSubscription: Subscription;
+  valeurDeRecherche: string;
+
   constructor(private gestionService: GestionQuestionnaireService) { }
 
   ngOnInit() {
+    this.initTableauQuestionnaires();
+  }
+  initTableauQuestionnaires(){
     this.gestionService.getAllQuestionnairesFromServer();
     this.questionnaireSubscription=this.gestionService.questSubject.subscribe(
       (quests: Questionnaire[]) => {
@@ -22,36 +26,16 @@ export class AccueilComponent implements OnInit, OnDestroy {
       }
     );
     this.gestionService.emitQuestSubject();
-    this.questionnairesAfficher=this.questionnaires;
   }
   getQuestionnaires()
   {
     return this.questionnaires;
   }
-  getQuestionnairesAfficher()
-  {
-    return this.questionnairesAfficher;
-  }
   onChercher(form: NgForm ){
 
   }
   onKeyUp(event: any){
-    console.log(event.keyCode);
-    if(event.keyCode==8 || event.keyCode==46)
-    {
-      this.gestionService.getQuestionnairesByTitre(event.target.value.toString());
-      this.questionnaireSubscription=this.gestionService.questSubject.subscribe(
-        (quests: Questionnaire[]) => {
-          this.questionnairesAfficher=quests;
-        }
-      );
-    }
-    this.gestionService.getQuestionnairesByTitre(event.target.value.toString());
-    this.questionnaireSubscription=this.gestionService.questSubject.subscribe(
-      (quests: Questionnaire[]) => {
-        this.questionnairesAfficher=quests;
-      }
-    );
+    this.questionnaires=this.gestionService.getQuestionnairesByTitre(this.valeurDeRecherche);
   }
   ngOnDestroy(){
     this.questionnaireSubscription.unsubscribe();

@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'connexion', component: AuthComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'questionnaires/repondre/:id', component: ReponseQuestionnaireComponent },
-  { path: '', component: AppComponent },
+  { path: '', component: AccueilComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' }
 ];

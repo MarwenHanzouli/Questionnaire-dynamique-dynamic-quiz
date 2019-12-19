@@ -3,7 +3,6 @@ import { GestionQuestionnaireService } from '../services/gestion-questionnaire.s
 import { ActivatedRoute, Router } from '@angular/router';
 import { Questionnaire } from '../models/Questionnaire.model';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { Reponse } from '../models/Reponse.model';
 import { GestionReponseService } from '../services/gestion-reponse.service';
 
 @Component({

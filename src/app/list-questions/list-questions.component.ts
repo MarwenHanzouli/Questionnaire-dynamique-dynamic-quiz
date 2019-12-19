@@ -92,8 +92,18 @@ export class ListQuestionsComponent implements OnInit {
   onSupprimerQuestionSimple(index){
     this.getQuestionsSimples().removeAt(index);
   }
-
+  
   // Envoyer le formulaire
+  nbrQuestionValide(){
+    if (this.getQcm().length==0 && this.getQuestionsSimples().length==0)
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  }
   onRefresh(){
     this.questForm.get('titre').setValue('');
     (<FormArray>this.questForm.get(['qcm'])).controls=[];

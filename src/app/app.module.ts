@@ -18,6 +18,7 @@ import { EmojiDirective } from './emoji.directive';
 import { GestionReponseService } from './services/gestion-reponse.service';
 import { ChartsModule } from 'ng2-charts';
 import { StatistiquesService } from './services/statistiques.service';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { StatistiquesService } from './services/statistiques.service';
     StatistiquesComponent,
     InscriptionComponent,
     ReponseQuestionnaireComponent,
-    EmojiDirective
+    EmojiDirective,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

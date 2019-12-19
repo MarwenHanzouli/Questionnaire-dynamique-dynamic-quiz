@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+
+        </div>
+        <div class="col-sm-8">
+            <div class="alert alert-success alert-dismissible fade in" *ngIf="type==='reponse'">
+                <strong appEmoji="✌️ 😀 😉 👍 👍">Votre réponse a été envoyée avec succès </strong>
+            </div>
+            <br>
+            <button style="position: absolute; right: 5%;" *ngIf="type==='reponse'" routerLink="/accueil" class="btn btn-primary btn-sm">Envoyer une autre réponse</button>
+            <div class="alert alert-success alert-dismissible fade in" *ngIf="type==='question'">
+                <strong appEmoji="✌️ 😀 😉 👍 👍">Votre questionnaire a été enregistrée avec succès </strong>
+                
+            </div>
+        </div>
+        <div class="col-sm-2">
+            
+        </div>
+    </div>
+</div>
+

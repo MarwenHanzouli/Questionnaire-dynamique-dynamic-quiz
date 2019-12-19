@@ -8,12 +8,14 @@ import { StatistiquesComponent } from './statistiques/statistiques.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AuthComponent } from './auth/auth.component';
 import { ReponseQuestionnaireComponent } from './reponse-questionnaire/reponse-questionnaire.component';
+import { AlertComponent } from './alert/alert.component';
 const routes: Routes = [
   { path: 'accueil', component: AccueilComponent},
   { path: 'questionnaire', component: ListQuestionsComponent },
   { path: 'statistiques', component: StatistiquesComponent },
   { path: 'connexion', component: AuthComponent },
   { path: 'inscription', component: InscriptionComponent },
+  { path: 'alert/:type', component: AlertComponent },
   { path: 'questionnaires/repondre/:id', component: ReponseQuestionnaireComponent },
   { path: '', component: AccueilComponent },
   { path: 'not-found', component: FourOhFourComponent },

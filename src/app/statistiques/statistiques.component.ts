@@ -23,6 +23,11 @@ export class StatistiquesComponent implements OnInit {
 
   constructor(private statService: StatistiquesService) { }
 
+  public colors = [
+    {
+      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)','rgba(186,175,34,0.3)'],
+    },
+  ];
   //*****************
   public barChartOptions = {
     scaleShowVerticalLines: false,
@@ -32,8 +37,7 @@ export class StatistiquesComponent implements OnInit {
   public barChartType = 'bar';
   public barChartLegend = true;
   public barChartData = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'}
   ];
 
   // Pie

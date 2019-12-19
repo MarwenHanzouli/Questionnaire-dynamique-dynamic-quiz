@@ -4,6 +4,28 @@
         <div class="col-sm-8">
             <h2>Voir les statistiques</h2>
             <div class="well well-sm">
+                <h3>Nombre de réponses par questionnaire</h3>
+                <div style="display: block; width: auto; height: auto;">
+                    <canvas baseChart
+                            [data]="pieChartData"
+                            [labels]="pieChartLabels"
+                            [chartType]="pieChartType"
+                            [colors]="colors">
+                    </canvas>
+                </div>
+            </div>
+            <div class="well well-sm">
+                <h3>Nombre de réponses par email</h3>
+                <div style="display: block; width: auto ; height:auto;">
+                    <canvas baseChart
+                            [data]="doughnutChartData"
+                            [labels]="doughnutChartLabels"
+                            [chartType]="doughnutChartType"
+                            [colors]="colors">
+                    </canvas>
+                </div>
+            </div>
+            <div class="well well-sm">
                 <div style="display: block; width: auto; height: auto;">
                     <canvas baseChart
                             [datasets]="barChartData"
@@ -11,24 +33,6 @@
                             [options]="barChartOptions"
                             [legend]="barChartLegend"
                             [chartType]="barChartType">
-                    </canvas>
-                </div>
-            </div>
-            <div class="well well-sm">
-                <div style="display: block; width: auto; height: auto;">
-                    <canvas baseChart
-                            [data]="pieChartData"
-                            [labels]="pieChartLabels"
-                            [chartType]="pieChartType">
-                    </canvas>
-                </div>
-            </div>
-            <div class="well well-sm">
-                <div style="display: block; width: auto ; height:auto;">
-                    <canvas baseChart
-                            [data]="doughnutChartData"
-                            [labels]="doughnutChartLabels"
-                            [chartType]="doughnutChartType">
                     </canvas>
                 </div>
             </div>

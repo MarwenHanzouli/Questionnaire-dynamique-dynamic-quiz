@@ -13,7 +13,7 @@ export class GestionReponseService {
   constructor(private httpClient: HttpClient,
               private gestionQuest: GestionQuestionnaireService) { }
 
-  ajouterReponse(rep, questionnaire: Questionnaire){
+  ajouterReponse(rep, questionnaire: Questionnaire, reponsesQcm){
     let reponsesSimples=[],qcm=[];
     let i,j:number;
     for(i=0;i<questionnaire.questionsSimples.length;i++)
@@ -28,7 +28,7 @@ export class GestionReponseService {
     {
       const reponseSimple={ 
                             "question": questionnaire.qcm[j]['titreQuestion'],
-                            "reponse": rep['qcm'][j]['reponseOption']
+                            "reponse": reponsesQcm[j]
                           }
       qcm.push(reponseSimple);
     }

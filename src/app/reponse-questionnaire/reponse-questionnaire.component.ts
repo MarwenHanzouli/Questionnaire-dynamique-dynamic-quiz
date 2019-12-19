@@ -16,6 +16,7 @@ export class ReponseQuestionnaireComponent implements OnInit {
   private id;
   questionnaire: Questionnaire;
   repForm: FormGroup;
+  reponsesQcm=[];
   constructor(private gestionService: GestionQuestionnaireService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -85,6 +86,7 @@ export class ReponseQuestionnaireComponent implements OnInit {
     let i:number;
     for(i=0;i<this.questionnaire.qcm.length;i++)
     {
+      this.reponsesQcm.push("-");
       this.ajouterQcm();
       const control = <FormArray>this.repForm.get(['qcm',i,'options']);
       let j:number;
@@ -102,14 +104,28 @@ export class ReponseQuestionnaireComponent implements OnInit {
   onRefresh(){
     
   }
+  testOptionsSelected(){
+    if(this.reponsesQcm.indexOf("-")===-1)
+    {
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  myEvent(j,event){
+    console.log("qcm n°"+j+": "+event);
+    this.reponsesQcm[j]=event;
+  }
   onSubmit(form){
     const formValue=this.repForm.value;
+    console.log(this.reponsesQcm);
     //const id=this.gestionService.getQuestionnaires().length+1;
     //const quest=new Questionnaire(id,formValue['titre'],formValue['questionsSimples'],formValue['qcm']);
     //const reponse=new Reponse(formValue['email'],1,formValue['titre'],formValue['reponsesSimples'],formValue['qcm'])
-    console.log(JSON.stringify(formValue));
+    console.log('form:'+JSON.stringify(formValue));
     //console.log(form.controls);
-    this.gestionReponse.ajouterReponse(formValue,this.questionnaire);
+    this.gestionReponse.ajouterReponse(formValue,this.questionnaire,this.reponsesQcm);
     //this.onRefresh();
     //this.router.navigate(['/questionnaire']);
   }

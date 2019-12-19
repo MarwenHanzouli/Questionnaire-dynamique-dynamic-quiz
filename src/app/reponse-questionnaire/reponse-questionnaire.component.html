@@ -22,7 +22,7 @@
                                     <div [formGroupName]="k" *ngFor="let option of getOptions(reponseContorl) ;let k=index">
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" id="repQcm" name="{{questionnaire.qcm[j]['titreQuestion']}}" value="{{questionnaire.qcm[j]['options'][k]['titreOption']}}" >{{questionnaire.qcm[j]['options'][k]['titreOption']}}
+                                                <input type="radio" id="repQcm" name="{{questionnaire.qcm[j]['titreQuestion']}}" (click)="myEvent(j,questionnaire.qcm[j]['options'][k]['titreOption'])">{{questionnaire.qcm[j]['options'][k]['titreOption']}}
                                             </label>
                                         </div>
                                     </div>
@@ -43,7 +43,7 @@
                             <input id="email" type="text" formControlName="email" class="form-control" placeholder="Entrer votre e-mail">
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-success" [disabled]="repForm.invalid || myOptions().invalid">
+                        <button type="submit" class="btn btn-success" [disabled]="repForm.invalid || !testOptionsSelected()">
                             Envoyer la réponse
                             <i class="glyphicon glyphicon-ok"></i>
                         </button>

@@ -121,7 +121,7 @@ export class ListQuestionsComponent implements OnInit {
     this.gestionService.ajouterQuestionnaire(quest).subscribe((data)=>{
       if(data['sucees']===false)
       {
-        this.toastr.warning("Oups! Le questionnaire n'a pas été ajouté", "Notification!");
+        this.toastr.warning("Oups! Le questionnaire n'a pas été ajouté, ce titre existe déjà", "Notification!");
         this.error=true;
         this.succes=false;
       }

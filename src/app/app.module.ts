@@ -20,6 +20,8 @@ import { ChartsModule } from 'ng2-charts';
 import { StatistiquesService } from './services/statistiques.service';
 import { AlertComponent } from './alert/alert.component';
 import { StatResolver } from './stat.resolver';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { StatResolver } from './stat.resolver';
     FormsModule,
     HttpClientModule,
     ChartsModule,
-    StatResolver
+    StatResolver,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [
     GestionQuestionnaireService,

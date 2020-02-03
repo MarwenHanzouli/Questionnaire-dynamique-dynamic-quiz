@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Questionnaire } from '../models/Questionnaire.model';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GestionQuestionnaireService {
-  private questionnaires: Questionnaire[]=[];
+  questionnaires: Questionnaire[]=[];
   questSubject= new Subject<Questionnaire[]>();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -19,10 +19,9 @@ export class GestionQuestionnaireService {
   getQuestionnaires(){
     return this.questionnaires;
   }
-  ajouterQuestionnaire(ques: Questionnaire){
-    var insertion:boolean;
-    this.httpClient.post('http://127.0.0.1:3000/qte', ques, {headers: this.headers})
-    .subscribe(
+  ajouterQuestionnaire(ques: Questionnaire): Observable<any>{
+    return this.httpClient.post('http://127.0.0.1:3000/qte', ques, {headers: this.headers});
+    /*.subscribe(
      (data) => {
       //console.log(data['sucees'])
       if(data['sucees']===false)
@@ -36,7 +35,7 @@ export class GestionQuestionnaireService {
         insertion=true;
       }
      });
-     return insertion;
+     return insertion;*/
   }
 
   getAllQuestionnairesFromServer(){

@@ -3,6 +3,8 @@ import { FormArray, FormGroup, FormControl, Validators, FormBuilder } from '@ang
 import { GestionQuestionnaireService } from '../services/gestion-questionnaire.service';
 import { Questionnaire } from '../models/Questionnaire.model';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-list-questions',
   templateUrl: './list-questions.component.html',
@@ -15,7 +17,8 @@ export class ListQuestionsComponent implements OnInit {
   error:boolean;
   constructor(private formBuilder: FormBuilder,
               private gestionService: GestionQuestionnaireService,
-              private router: Router) { }
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.initForm();
@@ -115,17 +118,24 @@ export class ListQuestionsComponent implements OnInit {
     const id=this.gestionService.getQuestionnaires().length+1;
     const quest=new Questionnaire(id,formValue['titre'].trim(),formValue['questionsSimples'],formValue['qcm']);
     //console.log(quest);
-    let h=await this.gestionService.ajouterQuestionnaire(quest)===true
-    if(h)
-    {
-      console.log("inserted");
-    }
-    else
-    {
-      console.log("not inserted");
-    }
-    this.succes=true;
-    //this.onRefresh();
-    this.router.navigate(['/questionnaire']);
+    this.gestionService.ajouterQuestionnaire(quest).subscribe((data)=>{
+      if(data['sucees']===false)
+      {
+        this.toastr.warning("Oups! Le questionnaire n'a pas été ajouté", "Notification!");
+        this.error=true;
+        this.succes=false;
+      }
+      else{
+        //console.log(JSON.stringify(data)+" marweeeeeeeeeeeeeeeeen");
+        this.gestionService.questionnaires.push(quest);
+        this.gestionService.emitQuestSubject();
+        this.toastr.success('Le questionnaire a été ajouté avec succès', "Notification!");
+        this.succes=true;
+        this.error=false;
+        this.onRefresh();
+        this.router.navigate(['/questionnaire']);
+      }
+    });
+    
   }
 }

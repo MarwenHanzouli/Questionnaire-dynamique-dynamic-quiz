@@ -132,7 +132,7 @@ export class ListQuestionsComponent implements OnInit {
         this.toastr.success('Le questionnaire a été ajouté avec succès', "Notification!");
         this.succes=true;
         this.error=false;
-        this.onRefresh();
+        //this.onRefresh();
         this.router.navigate(['/questionnaire']);
       }
     });

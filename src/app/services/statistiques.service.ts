@@ -9,8 +9,8 @@ export class StatistiquesService implements OnInit{
 
   private nbrRepParQuest=[];
   nbrRepParQuestSubject= new Subject<any[]>();
-
-  private nbrRepParEmail=[];
+  
+  nbrRepParEmail=[];
   nbrRepParEmailSubject= new Subject<any[]>();
 
   test1=[
@@ -76,8 +76,9 @@ export class StatistiquesService implements OnInit{
     //this.nbrRepParQuest=this.test1;
   }
 
-  getReponsesParEmail(){
-    return this.httpClient.get<any[]>('http://127.0.0.1:3000/St/Person').subscribe(
+  getReponsesParEmail(): Observable<any[]>{
+    return this.httpClient.get<any[]>('http://127.0.0.1:3000/St/Person');
+    /*.subscribe(
       (reponse) => {
         this.nbrRepParEmail=reponse;
         this.emitNbrRepParEmailSubject();

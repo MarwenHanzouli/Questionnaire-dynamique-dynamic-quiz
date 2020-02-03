@@ -14,7 +14,7 @@ import { StatResolver } from './stat.resolver';
 const routes: Routes = [
   { path: 'accueil', component: AccueilComponent},
   { path: 'questionnaire', component: ListQuestionsComponent },
-  { path: 'statistiques', component: StatistiquesComponent , resolve: { message: StatResolver }},
+  { path: 'statistiques', component: StatistiquesComponent , resolve: { messages: StatResolver }},
   { path: 'connexion', component: AuthComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'alert/:type', component: AlertComponent },

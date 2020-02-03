@@ -21,21 +21,6 @@ export class GestionQuestionnaireService {
   }
   ajouterQuestionnaire(ques: Questionnaire): Observable<any>{
     return this.httpClient.post('http://127.0.0.1:3000/qte', ques, {headers: this.headers});
-    /*.subscribe(
-     (data) => {
-      //console.log(data['sucees'])
-      if(data['sucees']===false)
-      {
-        insertion= false;
-      }
-      else{
-        //console.log(JSON.stringify(data)+" marweeeeeeeeeeeeeeeeen");
-        this.questionnaires.push(ques);
-        this.emitQuestSubject();
-        insertion=true;
-      }
-     });
-     return insertion;*/
   }
 
   getAllQuestionnairesFromServer(){

@@ -71,6 +71,7 @@ export class StatistiquesComponent implements OnInit {
     this.reponsesSubscription=this.statService.nbrRepParQuestSubject.subscribe(
       (rep: any[]) => {
         this.nbrRepParQuest=rep;
+        console.log(this.nbrRepParQuest);
       }
     );
     this.statService.emitNbrRepParQuestSubject();
@@ -98,14 +99,20 @@ export class StatistiquesComponent implements OnInit {
       this.colorsDoughnut[0].backgroundColor=backGroundDoughnut;
     } );*/
     //console.log(this.route.data['_value'].message);
-    this.statService.getReponsesParEmail();
-    this.reponsesEmailSubscription=this.statService.nbrRepParEmailSubject.subscribe(
+    this.reponsesEmailSubscription=this.statService.getReponsesParEmail().subscribe((data)=>{
+      (data) =>{
+        this.statService.nbrRepParEmail=data;
+        console.log(this.nbrRepParEmail);
+        this.statService.emitNbrRepParEmailSubject();
+      }
+    });
+    /*this.reponsesEmailSubscription=this.statService.nbrRepParEmailSubject.subscribe(
       (rep: any[]) => {
         this.nbrRepParEmail=rep;
         console.log(this.nbrRepParEmail);
       }
     );
-    this.statService.emitNbrRepParEmailSubject();
+    this.statService.emitNbrRepParEmailSubject();*/
     let backGroundDoughnut=[];
       let j=0;
       this.nbrRepParEmail.forEach((element) => {

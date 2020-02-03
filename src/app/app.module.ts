@@ -19,6 +19,7 @@ import { GestionReponseService } from './services/gestion-reponse.service';
 import { ChartsModule } from 'ng2-charts';
 import { StatistiquesService } from './services/statistiques.service';
 import { AlertComponent } from './alert/alert.component';
+import { StatResolver } from './stat.resolver';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AlertComponent } from './alert/alert.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    StatResolver
   ],
   providers: [
     GestionQuestionnaireService,

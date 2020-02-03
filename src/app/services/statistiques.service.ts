@@ -61,9 +61,9 @@ export class StatistiquesService implements OnInit{
   }
   ngOnInit(){
   }
-  getReponsesParQuestionnaire(){
-    this.httpClient.get<any[]>('http://127.0.0.1:3000/St/question')
-    .subscribe(
+  getReponsesParQuestionnaire(): Observable<any>{
+    return this.httpClient.get<any[]>('http://127.0.0.1:3000/St/question');
+    /*.subscribe(
       (reponse) => {
         this.nbrRepParQuest=reponse;
         this.emitNbrRepParQuestSubject();
@@ -73,7 +73,7 @@ export class StatistiquesService implements OnInit{
         console.log(error);
       }
     );
-    //this.nbrRepParQuest=this.test1;
+    //this.nbrRepParQuest=this.test1;*/
   }
 
   getReponsesParEmail(): Observable<any[]>{

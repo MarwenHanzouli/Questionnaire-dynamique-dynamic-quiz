@@ -66,15 +66,19 @@ export class StatistiquesComponent implements OnInit {
     this.initDataForDoughnut();
   }
   initDataForPipe(){
+    this.route.data.subscribe((data: { nbrRepsParQuestionnaire: any }) => {
+      this.nbrRepParQuest = data.nbrRepsParQuestionnaire;
+      console.log(this.nbrRepParQuest);
+      });
     let backGroundPie=[];
-    this.statService.getReponsesParQuestionnaire();
+    /*this.statService.getReponsesParQuestionnaire();
     this.reponsesSubscription=this.statService.nbrRepParQuestSubject.subscribe(
       (rep: any[]) => {
         this.nbrRepParQuest=rep;
         console.log(this.nbrRepParQuest);
       }
     );
-    this.statService.emitNbrRepParQuestSubject();
+    this.statService.emitNbrRepParQuestSubject();*/
     let i=0;
     this.nbrRepParQuest.forEach((element)=> {
       this.titreQuestions.push(element['titre']);
@@ -86,33 +90,11 @@ export class StatistiquesComponent implements OnInit {
   }
 
   initDataForDoughnut(){
-    /*this.route.data.subscribe((data) => {
-      console.log(data['message']);
-      let backGroundDoughnut=[];
-      let j=0;
-      this.nbrRepParEmail.forEach((element) => {
-        this.emails.push(element['email']);
-        this.nbrRepsParEmail.push(element['nbrRep']);
-        backGroundDoughnut.push(this.allColors[j]);
-        j++;
+    this.route.data.subscribe((data: { nbrRepsParEmail: any }) => {
+      this.nbrRepParEmail = data.nbrRepsParEmail;
+      console.log(this.nbrRepParEmail);
       });
-      this.colorsDoughnut[0].backgroundColor=backGroundDoughnut;
-    } );*/
-    //console.log(this.route.data['_value'].message);
-    this.reponsesEmailSubscription=this.statService.getReponsesParEmail().subscribe((data)=>{
-      (data) =>{
-        this.statService.nbrRepParEmail=data;
-        console.log(this.nbrRepParEmail);
-        this.statService.emitNbrRepParEmailSubject();
-      }
-    });
-    /*this.reponsesEmailSubscription=this.statService.nbrRepParEmailSubject.subscribe(
-      (rep: any[]) => {
-        this.nbrRepParEmail=rep;
-        console.log(this.nbrRepParEmail);
-      }
-    );
-    this.statService.emitNbrRepParEmailSubject();*/
+    /*this.statService.emitNbrRepParEmailSubject();*/
     let backGroundDoughnut=[];
       let j=0;
       this.nbrRepParEmail.forEach((element) => {

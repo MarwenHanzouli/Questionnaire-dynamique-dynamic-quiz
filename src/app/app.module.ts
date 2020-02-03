@@ -19,9 +19,10 @@ import { GestionReponseService } from './services/gestion-reponse.service';
 import { ChartsModule } from 'ng2-charts';
 import { StatistiquesService } from './services/statistiques.service';
 import { AlertComponent } from './alert/alert.component';
-import { StatResolver } from './stat.resolver';
+import { StatResolver } from './resolvers/stat.resolver';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Stat1Resolver } from './resolvers/stat1.resolver';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     ChartsModule,
     StatResolver,
+    Stat1Resolver,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot() // ToastrModule added
   ],

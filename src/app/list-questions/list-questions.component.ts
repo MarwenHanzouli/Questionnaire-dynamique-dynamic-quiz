@@ -110,12 +110,20 @@ export class ListQuestionsComponent implements OnInit {
     (<FormArray>this.questForm.get(['questionsSimples'])).controls=[];
     this.succes=false;
   }
-  onSubmit(){
+  async onSubmit(){
     const formValue=this.questForm.value;
     const id=this.gestionService.getQuestionnaires().length+1;
     const quest=new Questionnaire(id,formValue['titre'].trim(),formValue['questionsSimples'],formValue['qcm']);
-    console.log(quest);
-    this.gestionService.ajouterQuestionnaire(quest);
+    //console.log(quest);
+    let h=await this.gestionService.ajouterQuestionnaire(quest)===true
+    if(h)
+    {
+      console.log("inserted");
+    }
+    else
+    {
+      console.log("not inserted");
+    }
     this.succes=true;
     //this.onRefresh();
     this.router.navigate(['/questionnaire']);

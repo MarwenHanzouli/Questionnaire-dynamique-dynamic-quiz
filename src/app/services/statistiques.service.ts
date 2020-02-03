@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -62,32 +62,31 @@ export class StatistiquesService implements OnInit{
   ngOnInit(){
   }
   getReponsesParQuestionnaire(){
-    /*this.httpClient.get<any[]>('http://127.0.0.1:3000/----')
+    this.httpClient.get<any[]>('http://127.0.0.1:3000/St/question')
     .subscribe(
       (reponse) => {
         this.nbrRepParQuest=reponse;
         this.emitNbrRepParQuestSubject();
+        //console.log(reponse);
       },
       (error) => {
         console.log(error);
       }
-    );*/
-    this.nbrRepParQuest=this.test1;
-    this.emitNbrRepParQuestSubject();
+    );
+    //this.nbrRepParQuest=this.test1;
   }
 
   getReponsesParEmail(){
-    /*this.httpClient.get<any[]>('http://127.0.0.1:3000/----')
-    .subscribe(
+    return this.httpClient.get<any[]>('http://127.0.0.1:3000/St/Person').subscribe(
       (reponse) => {
         this.nbrRepParEmail=reponse;
         this.emitNbrRepParEmailSubject();
+        //console.log(reponse);
       },
       (error) => {
         console.log(error);
       }
-    );*/
-    this.nbrRepParEmail=this.test2;
-    this.emitNbrRepParEmailSubject();
+    );
+    //this.nbrRepParEmail=this.test2;*/
   }
 }

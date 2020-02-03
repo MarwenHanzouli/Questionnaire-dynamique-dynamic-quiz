@@ -20,19 +20,23 @@ export class GestionQuestionnaireService {
     return this.questionnaires;
   }
   ajouterQuestionnaire(ques: Questionnaire){
-    this.questionnaires.push(ques);
-    console.log(ques);
-    this.emitQuestSubject();
+    var insertion:boolean;
     this.httpClient.post('http://127.0.0.1:3000/qte', ques, {headers: this.headers})
     .subscribe(
      (data) => {
-      console.log(data);
-      
-     },
-     (error) => {
-       console.log('Erreur : '+ error);
-     }
-     );
+      //console.log(data['sucees'])
+      if(data['sucees']===false)
+      {
+        insertion= false;
+      }
+      else{
+        //console.log(JSON.stringify(data)+" marweeeeeeeeeeeeeeeeen");
+        this.questionnaires.push(ques);
+        this.emitQuestSubject();
+        insertion=true;
+      }
+     });
+     return insertion;
   }
 
   getAllQuestionnairesFromServer(){

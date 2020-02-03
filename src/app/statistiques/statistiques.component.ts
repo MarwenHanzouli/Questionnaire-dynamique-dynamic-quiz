@@ -66,8 +66,10 @@ export class StatistiquesComponent implements OnInit {
     this.initDataForDoughnut();
   }
   initDataForPipe(){
-    this.route.data.subscribe((data: { nbrRepsParQuestionnaire: any }) => {
+    this.reponsesSubscription=this.route.data.subscribe((data: { nbrRepsParQuestionnaire: any }) => {
       this.nbrRepParQuest = data.nbrRepsParQuestionnaire;
+      this.statService.nbrRepParQuest=this.nbrRepParQuest;
+      this.statService.emitNbrRepParQuestSubject();
       console.log(this.nbrRepParQuest);
       });
     let backGroundPie=[];
@@ -90,11 +92,13 @@ export class StatistiquesComponent implements OnInit {
   }
 
   initDataForDoughnut(){
-    this.route.data.subscribe((data: { nbrRepsParEmail: any }) => {
+    this.reponsesEmailSubscription=this.route.data.subscribe((data: { nbrRepsParEmail: any }) => {
       this.nbrRepParEmail = data.nbrRepsParEmail;
+      this.statService.nbrRepParEmail=this.nbrRepParEmail;
+      this.statService.emitNbrRepParEmailSubject();
       console.log(this.nbrRepParEmail);
       });
-    /*this.statService.emitNbrRepParEmailSubject();*/
+    
     let backGroundDoughnut=[];
       let j=0;
       this.nbrRepParEmail.forEach((element) => {

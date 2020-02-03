@@ -7,7 +7,7 @@ import { Subject, Observable } from 'rxjs';
 })
 export class StatistiquesService implements OnInit{
 
-  private nbrRepParQuest=[];
+  nbrRepParQuest=[];
   nbrRepParQuestSubject= new Subject<any[]>();
   
   nbrRepParEmail=[];

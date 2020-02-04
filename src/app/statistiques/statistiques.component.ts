@@ -68,19 +68,17 @@ export class StatistiquesComponent implements OnInit {
   initDataForPipe(){
     this.reponsesSubscription=this.route.data.subscribe((data: { nbrRepsParQuestionnaire: any }) => {
       this.nbrRepParQuest = data.nbrRepsParQuestionnaire;
-      this.statService.nbrRepParQuest=this.nbrRepParQuest;
-      this.statService.emitNbrRepParQuestSubject();
       console.log(this.nbrRepParQuest);
       });
     let backGroundPie=[];
-    /*this.statService.getReponsesParQuestionnaire();
-    this.reponsesSubscription=this.statService.nbrRepParQuestSubject.subscribe(
+    //this.statService.getReponsesParQuestionnaire();
+    /*this.reponsesSubscription=this.statService.getReponsesParQuestionnaire().subscribe(
       (rep: any[]) => {
         this.nbrRepParQuest=rep;
         console.log(this.nbrRepParQuest);
       }
     );
-    this.statService.emitNbrRepParQuestSubject();*/
+    /*this.statService.emitNbrRepParQuestSubject();*/
     let i=0;
     this.nbrRepParQuest.forEach((element)=> {
       this.titreQuestions.push(element['titre']);
@@ -92,10 +90,10 @@ export class StatistiquesComponent implements OnInit {
   }
 
   initDataForDoughnut(){
+    /*this.nbrRepParEmail=this.route.snapshot.data['nbrRepsParEmail'];
+    console.log(this.nbrRepParEmail);*/
     this.reponsesEmailSubscription=this.route.data.subscribe((data: { nbrRepsParEmail: any }) => {
       this.nbrRepParEmail = data.nbrRepsParEmail;
-      this.statService.nbrRepParEmail=this.nbrRepParEmail;
-      this.statService.emitNbrRepParEmailSubject();
       console.log(this.nbrRepParEmail);
       });
     

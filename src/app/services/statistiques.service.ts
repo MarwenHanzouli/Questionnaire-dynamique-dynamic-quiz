@@ -8,10 +8,8 @@ import { Subject, Observable } from 'rxjs';
 export class StatistiquesService implements OnInit{
 
   nbrRepParQuest=[];
-  nbrRepParQuestSubject= new Subject<any[]>();
   
   nbrRepParEmail=[];
-  nbrRepParEmailSubject= new Subject<any[]>();
 
   test1=[
     {
@@ -53,12 +51,6 @@ export class StatistiquesService implements OnInit{
 
   constructor(private httpClient: HttpClient) { }
 
-  emitNbrRepParQuestSubject(){
-    this.nbrRepParQuestSubject.next(this.nbrRepParQuest.slice());
-  }
-  emitNbrRepParEmailSubject(){
-    this.nbrRepParEmailSubject.next(this.nbrRepParEmail.slice());
-  }
   ngOnInit(){
   }
   getReponsesParQuestionnaire(): Observable<any>{

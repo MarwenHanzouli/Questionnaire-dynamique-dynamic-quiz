@@ -8,7 +8,7 @@ import 'rxjs/add/operator/delay';
 import { StatistiquesService } from '../services/statistiques.service';
 @NgModule()
 @Injectable({ providedIn: 'root' })
-export class Stat1Resolver implements Resolve<any> {
+export class StatsResolver implements Resolve<any> {
   constructor(private statService: StatistiquesService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

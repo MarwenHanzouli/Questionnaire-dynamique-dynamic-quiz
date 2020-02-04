@@ -22,7 +22,7 @@ import { AlertComponent } from './alert/alert.component';
 import { StatResolver } from './resolvers/stat.resolver';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Stat1Resolver } from './resolvers/stat1.resolver';
+import { StatsResolver } from './resolvers/stats.resolver';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { Stat1Resolver } from './resolvers/stat1.resolver';
     HttpClientModule,
     ChartsModule,
     StatResolver,
-    Stat1Resolver,
+    StatsResolver,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot() // ToastrModule added
   ],

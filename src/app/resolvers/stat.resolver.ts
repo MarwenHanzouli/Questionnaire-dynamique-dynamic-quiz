@@ -12,6 +12,6 @@ export class StatResolver implements Resolve<any> {
   constructor(private statService: StatistiquesService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return this.statService.getReponsesParEmail();
+    return this.statService.getStatistiques();
   }
 }

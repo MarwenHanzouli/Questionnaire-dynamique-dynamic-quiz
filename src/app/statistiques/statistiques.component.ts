@@ -66,9 +66,9 @@ export class StatistiquesComponent implements OnInit {
     this.initDataForDoughnut();
   }
   initDataForPipe(){
-    this.reponsesSubscription=this.route.data.subscribe((data: { nbrRepsParQuestionnaire: any }) => {
-      this.nbrRepParQuest = data.nbrRepsParQuestionnaire;
-      console.log(this.nbrRepParQuest);
+    this.reponsesSubscription=this.route.data.subscribe((data: { statss: any }) => {
+      this.nbrRepParQuest = data.statss[0]['nbrRepsParQuestionnaire'];
+      console.log(data.statss[0]['nbrRepsParQuestionnaire']);
       });
     let backGroundPie=[];
     //this.statService.getReponsesParQuestionnaire();
@@ -92,9 +92,9 @@ export class StatistiquesComponent implements OnInit {
   initDataForDoughnut(){
     /*this.nbrRepParEmail=this.route.snapshot.data['nbrRepsParEmail'];
     console.log(this.nbrRepParEmail);*/
-    this.reponsesEmailSubscription=this.route.data.subscribe((data: { nbrRepsParEmail: any }) => {
-      this.nbrRepParEmail = data.nbrRepsParEmail;
-      console.log(this.nbrRepParEmail);
+    this.reponsesEmailSubscription=this.route.data.subscribe((data: { statss: any }) => {
+      this.nbrRepParEmail = data.statss[0]['nbrRepsParEmail'];
+      console.log(data.statss[0]['nbrRepsParEmail']);
       });
     
     let backGroundDoughnut=[];

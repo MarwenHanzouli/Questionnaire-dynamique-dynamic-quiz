@@ -1,18 +1,38 @@
-[
-    {
-      "email": "marwenhanzouli@gmail.com",
-      "nbrRep": 10
-    },
-    {
-      "email": "arfaouinoureddine@gmail.com",
-      "nbrRep": 14
-    },
-    {
-      "email":"pap@hotmail.fr",
-      "nbrRep": 9
-    },
-    {
-      "email":"messi@yahoo.com",
-      "nbrRep": 17
-    }
-  ]
+{
+    "nbrRepsParEmail" : [
+                          {
+                            "email": "marwenhanzouli@gmail.com",
+                            "nbrRep": 10
+                          },
+                          {
+                            "email": "arfaouinoureddine@gmail.com",
+                            "nbrRep": 14
+                          },
+                          {
+                            "email":"pap@hotmail.fr",
+                            "nbrRep": 9
+                          },
+                          {
+                            "email":"messi@yahoo.com",
+                            "nbrRep": 17
+                          }
+                        ],
+    "nbrRepsParQuestionnaire" : [
+                                    {
+                                      "titre": "quest1",
+                                      "nbrRep": 5
+                                    },
+                                    {
+                                      "titre": "quest2",
+                                      "nbrRep": 15
+                                    },
+                                    {
+                                      "titre":"quest3",
+                                      "nbrRep": 25
+                                    },
+                                    {
+                                      "titre":"quest4",
+                                      "nbrRep": 66
+                                    }
+                                ]
+  }

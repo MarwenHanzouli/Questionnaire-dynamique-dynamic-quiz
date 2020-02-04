@@ -82,4 +82,7 @@ export class StatistiquesService implements OnInit{
     );
     //this.nbrRepParEmail=this.test2;*/
   }
+  getStatistiques(): Observable<any[]>{
+    return this.httpClient.get<any[]>('http://127.0.0.1:3000/St');
+  }
 }
